@@ -4,12 +4,17 @@
   "description": "API backend for the Drops mobile app",
   "main": "index.js",
   "scripts": {
+    "dev": "node scripts/dev.js",
+    "lint": "standard",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "dependencies":{
     "express":"*",
     "mongoose":"*",
     "body-parser":"*"
+  },
+  "devDependencies":{
+    "standard": "^8.3.0"
   },
   "author": "Joe Iaquinto",
   "license": "ISC"
