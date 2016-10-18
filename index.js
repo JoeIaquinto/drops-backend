@@ -3,7 +3,8 @@ var mongoose = require('mongoose');
 var Schema = mongoose.Schema;
 var Drop = require('./models/Drop');
 var User = require('./models/User');
-mongoose.connect('mongodb://localhost/drops');
+var dbURL = 'mongodb://localhost/drops'
+mongoose.connect(dbURL);
 
 var app = express();
 var drops = require('./api/drops');
