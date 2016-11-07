@@ -9,9 +9,9 @@
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "dependencies":{
-    "express":"*",
-    "mongoose":"*",
-    "body-parser":"*"
+    "express-restify-mongoose": "^4.0.0",
+    "mongoose": "^4.0.0",
+    "shortid":"*"
   },
   "devDependencies":{
     "standard": "^8.3.0"

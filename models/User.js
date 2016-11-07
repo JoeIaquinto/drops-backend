@@ -1,18 +1,33 @@
-var mongoose = require('mongoose');
-
-require('dotenv').load();
-
-var Schema = mongoose.Schema;
+var mongoose = require('mongoose')
+var Schema = mongoose.Schema
+var shortid = require('shortid')
 
 var UserSchema = new Schema({
-  fb_id:String,
-  expires:Date,
+  _id: {
+    type: String,
+    'default': shortid.generate
+  },
+  fb_id: String,
+  auth: {
+    fb_token: String,
+    expires: Date
+  },
   name: String,
-  friends: [String],
-  drops:[Object]
-});
+  friends: [{ type: String, ref: 'User' }]
+})
 
+UserSchema.virtual('drops', {
+  ref: 'drops',
+  localField: '_id',
+  foreignField: 'creator'
+})
 
-var User = mongoose.model('User', UserSchema);
+UserSchema.virtual('feed', {
+  ref: 'feed',
+  localField: '_id',
+  foreignField: 'user'
+})
 
-module.exports = User;
+var User = mongoose.model('users', UserSchema)
+
+module.exports = User

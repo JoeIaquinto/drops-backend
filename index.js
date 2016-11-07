@@ -1,19 +1,35 @@
-var express = require('express');
-var mongoose = require('mongoose');
-var Schema = mongoose.Schema;
-var Drop = require('./models/Drop');
-var User = require('./models/User');
-var dbURL = 'mongodb://localhost/drops'
-mongoose.connect(dbURL);
+const express = require('express')
+const bodyParser = require('body-parser')
+const methodOverride = require('method-override')
+const mongoose = require('mongoose')
+const restify = require('express-restify-mongoose')
+const app = express()
+const router = express.Router()
+var Drop = require('./models/Drop')
+var User = require('./models/User')
+var Feed = require('./models/Feed')
 
-var app = express();
-var drops = require('./api/drops');
-var users = require('./api/users');
+var DropOptions = require('./options/Drop')
+var UserOptions = require('./options/User')
+var FeedOptions = require('./options/Feed')
 
-app.use(require('body-parser')());
-app.use(require('cookie-parser')());
+mongoose.connect('mongodb://localhost:27017/database')
+app.use(bodyParser.json())
+app.use(require('cookie-parser')())
+app.use(methodOverride())
 
-app.use('/drops',drops);
-app.use('/users',users);
-app.listen(3000);
-console.log('Listening on port 3000...');
+var dropuri = restify.serve(router, Drop, DropOptions)
+var useruri = restify.serve(router, User, UserOptions)
+var feeduri = restify.serve(router, Feed, FeedOptions)
+
+var DropAPI = require('./api/Drop')
+var UserAPI = require('./api/User')
+var FeedAPI = require('./api/Feed')
+app.use('/api/v1/drops', DropAPI)
+app.use('/api/v1/users', UserAPI)
+app.use('/api/v1/feed', FeedAPI)
+
+app.use(router)
+app.listen(3000, () => {
+  console.log('Express server listening on port 3000\n' + dropuri + '\n' + useruri + '\n' + feeduri)
+})
