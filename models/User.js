@@ -16,10 +16,16 @@ var UserSchema = new Schema({
   friends: [{ type: String, ref: 'User' }]
 })
 
-UserSchema.virtual('drops', {
+UserSchema.virtual('drops_created', {
   ref: 'drops',
   localField: '_id',
   foreignField: 'creator'
+})
+
+UserSchema.virtual('drops_guest', {
+  ref: 'drops',
+  localField: '_id',
+  foreignField: 'guests._guest'
 })
 
 UserSchema.virtual('feed', {

@@ -23,7 +23,7 @@ router.get('/feed', function (req, res) {
     path: 'drops',
     select: 'feed'
   })
-  .select('drops.feed feed')
+  .select('drops feed')
   .exec(function (err, feedItems) {
     if (err) return err
     console.log('User ' + req.query.UserID + ' Feed:\n' + JSON.stringify(feedItems))
