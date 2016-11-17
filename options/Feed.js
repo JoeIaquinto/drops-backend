@@ -1,3 +1,7 @@
+var Drop = require('../models/Drop')
+var User = require('../models/User')
+var Feed = require('../models/Feed')
+
 // Requires User logged in, DropID provided
 // Determine if user can add feed objects for the Drop (is guest?)
 // Determine action made? Use diff of old drop to new?

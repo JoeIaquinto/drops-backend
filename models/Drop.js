@@ -31,7 +31,9 @@ var DropSchema = new Schema({
       voters: [{type: String, ref: 'User'}]
     }
   ],
+  publicity: Number,
   creator: {type: String, ref: 'User'},
+  blacklist: [{type: String, ref: 'User'}],
   guests: [
     {
       _guest: {type: String, ref: 'User'},

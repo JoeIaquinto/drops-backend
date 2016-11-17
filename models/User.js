@@ -13,6 +13,7 @@ var UserSchema = new Schema({
     expires: Date
   },
   name: String,
+  publicity: Number,
   friends: [{ type: String, ref: 'User' }]
 })
 

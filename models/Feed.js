@@ -9,6 +9,7 @@ var FeedSchema = new Schema({
   },
   drop: {type: String, ref: 'Drop'},
   user: {type: String, ref: 'User'},
+  publicity: Number,
   action: String,
   time: Date
 })

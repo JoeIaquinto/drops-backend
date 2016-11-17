@@ -1,3 +1,6 @@
+var Drop = require('../models/Drop')
+var User = require('../models/User')
+var Feed = require('../models/Feed')
 
 function dropPreCreate (req, res, next) {
   next()

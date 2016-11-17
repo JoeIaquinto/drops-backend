@@ -1,3 +1,7 @@
+var Drop = require('../models/Drop')
+var User = require('../models/User')
+var Feed = require('../models/Feed')
+
 // Get permanent FB id from user's cookie app id
 // Check if user already signed up using FB_ID
 function userPreCreate (req, res, next) {
