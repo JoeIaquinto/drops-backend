@@ -13,39 +13,10 @@ var DropSchema = new Schema({
     required: [true, 'Name required']
   },
   description: {type: String, default: ''},
-  locations: [
-    {
-      name: {type: String, default: ''},
-      placesKey: {type: String, default: ''},
-      loc: {
-        type: {type: String},
-        coordinates: []
-      },
-      voters: [{type: String, ref: 'User'}]
-    }
-  ],
-  times: [
-    {
-      startdate: Date,
-      enddate: Date,
-      voters: [{type: String, ref: 'User'}]
-    }
-  ],
-  creator: {type: String, ref: 'User'},
-  guests: [
-    {
-      _guest: {type: String, ref: 'User'},
-      permisions: {type: String, default: 'Guest'},
-      visibility: {type: String, default: 'Friends'}
-    }
-  ],
-  comments: [{_guest: {type: String, ref: 'User'}, body: String, date: Date}]
-})
-
-DropSchema.virtual('feed', {
-  ref: 'feed',
-  localField: '_id',
-  foreignField: 'drop'
+  location: {type: String},
+  latitude: {type: Number},
+  longitude: {type: Number},
+  times: Date,
 })
 
 var Drop = mongoose.model('drops', DropSchema)
