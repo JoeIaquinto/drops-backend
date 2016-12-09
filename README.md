@@ -1,6 +1,11 @@
 # Drops Backend
 
 Event, user, and feed RESTful API for the [Drops React Native App](https://github.com/JoeIaquinto/drops).
+
+# Progress
+
+  Fall 2016 semester for RCOS we created the mongoose schema and wrote the backend to use express-restify-mongoose. We did a lot of concepting and design behind the data and schema of Drops, Users, and Feed objects.
+
 # Installation
 
   Make sure you have the latest version of [NodeJS](https://nodejs.org/en/). Pull the repository and `$npm install`. Download [Ngrok](https://ngrok.com/). Install [MongoDB](https://www.mongodb.com/) and necessary tools. Optionally, install [Nodemon](https://github.com/remy/nodemon) to refresh the app on save.
